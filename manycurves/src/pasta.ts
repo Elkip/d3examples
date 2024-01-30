@@ -12,6 +12,7 @@ d3.json < IStudy > ("curves.json").then((data) => {
     if (data === undefined) {
         return;
     }
+    console.log(data);
     d3.select("p#loading").remove();
     d3.select("div#legend").style("opacity", 1);
     var curInd: number;

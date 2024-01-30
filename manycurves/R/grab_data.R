@@ -6,7 +6,6 @@ times <- as.numeric(substr(nam, 5, nchar(nam))) # time in minutes (480 min = 8 h
 dimnames(curves) <- NULL
 
 library(RJSONIO)
-library(jsonlite)
 
 cat0 <- function(file, ...) cat(..., sep="", file=file)
 cat0a <- function(file, ...) cat(..., sep="", file=file, append=TRUE)
@@ -17,4 +16,3 @@ cat0a(file, "\"times\" : \n", toJSON(times), ",\n\n")
 cat0a(file, "\"curves\" : \n", toJSON(curves), "\n\n")
 cat0a(file, "}\n")
 
-write_json(curves, file)

@@ -31577,6 +31577,7 @@ d3__WEBPACK_IMPORTED_MODULE_1__.json("curves.json").then((data) => {
     if (data === undefined) {
         return;
     }
+    console.log(data);
     d3__WEBPACK_IMPORTED_MODULE_1__.select("p#loading").remove();
     d3__WEBPACK_IMPORTED_MODULE_1__.select("div#legend").style("opacity", 1);
     var curInd;
