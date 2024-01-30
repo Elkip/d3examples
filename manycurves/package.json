@@ -1,0 +1,29 @@
+{
+  "name": "pastaplots",
+  "version": "1.0.0",
+  "description": "Updated D3 Pasta Plots from kbroman",
+  "scripts": {
+    "start": "http-server",
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elkip/d3examples.git#typescript-D3v7"
+  },
+  "bugs": {
+    "url": "https://github.com/Elkip/d3examples/issues"
+  },
+  "homepage": "https://github.com/Elkip/d3examples/tree/typescript-D3v7#readme",
+  "dependencies": {
+    "d3": "^7.8.5"
+  },
+  "devDependencies": {
+    "@types/d3": "^7.4.3",
+    "http-server": "^14.1.1",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.90.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

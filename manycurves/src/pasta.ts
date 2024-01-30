@@ -7,6 +7,7 @@ interface IStudy {
     curves: Phenotypes[];
     times: number[];
 }
+
 d3.json < IStudy > ("curves.json").then((data) => {
     if (data === undefined) {
         return;
@@ -105,7 +106,7 @@ def.pad.bottom + height[0]})`)
         .range([0, def.pixelsPer * (nInd - 1) + 1]);
     // X/Y Scales for lower Speghetti Plot
     const xScaleCurve = d3.scaleLinear()
-        .domain([0, d3.max(data.times) ? ? 0])
+        .domain([0, d3.max(data.times) ?? 0])
         .range([def.pixelsPer / 2, width - def.pixelsPer / 2]);
     const yScaleCurve = d3.scaleLinear()
         .domain([minPhe, maxPhe])
@@ -157,11 +158,11 @@ def.pad.bottom + height[0]})`)
         .enter()
         .append("line")
         .attr("x1", (d) => {
-            return xScaleImg(d * 30 - 1) ? ? 0 +
+            return xScaleImg(d * 30 - 1) ?? 0 +
                 def.pixelsPer / 2;
         })
         .attr("x2", (d) => {
-            return xScaleImg(d * 30 - 1) ? ? 0 + def.pixelsPer / 2;
+            return xScaleImg(d * 30 - 1) ?? 0 + def.pixelsPer / 2;
         })
         .attr("y1", height[0])
         .attr("y2", height[0] + def.pad.bottom * 0.1)
@@ -175,7 +176,7 @@ def.pad.bottom + height[0]})`)
             return d;
         })
         .attr("x", (d) => {
-            return xScaleImg(d * 30 - 1) ? ? 0 +
+            return xScaleImg(d * 30 - 1) ?? 0 +
                 def.pixelsPer / 2;
         })
         .attr("y", height[0] + def.pad.bottom * 0.2)
@@ -199,10 +200,10 @@ def.pad.bottom + height[0]})`)
         .attr("x1", 0)
         .attr("x2", -def.pad.left * 0.1)
         .attr("y1", d => {
-            return yScaleImg(d) ? ? 0;
+            return yScaleImg(d) ?? 0;
         })
         .attr("y2", (d) => {
-            return yScaleImg(d) ? ? 0;
+            return yScaleImg(d) ?? 0;
         })
         .attr("stroke", def.labelcolor);
     // Y axis ticks / labels
@@ -215,7 +216,7 @@ def.pad.bottom + height[0]})`)
         })
         .attr("x", -def.pad.left * 0.2)
         .attr("y", (d) => {
-            return yScaleImg(d) ? ? 0;
+            return yScaleImg(d) ?? 0;
         })
         .attr("fill", def.labelcolor)
         .attr("text-anchor", "end")
@@ -325,12 +326,12 @@ def.pad.bottom + height[0]})`)
         .append("rect")
         .attr("class", "imgPixels")
         .attr("x", (d) => {
-            const x = xScaleImg(+d.col) ? ? 0;
+            const x = xScaleImg(+d.col) ?? 0;
             return x;
         })
         .attr("y", (d) => {
             const y = yScaleImg(indexInd[+d.row]);
-            return y ? ? 0;
+            return y ?? 0;
         })
         .attr("height", def.pixelsPer)
         .attr("width", def.pixelsPer)
@@ -397,7 +398,7 @@ def.pad.bottom + height[0]})`)
         }
         return d3.line < number > ()
             .x((d) => {
-                return xScaleCurve(d) ? ? 0;
+                return xScaleCurve(d) ?? 0;
             })
             .y((d, di) => {
                 return yScaleCurve(data.curves[ind][di]);
@@ -446,8 +447,7 @@ def.pad.bottom + height[0]})`)
             return drawCurve(ind); // put the darkBlue curve there
         } else {
             d3.select("path#phecurve").remove(); // delete the darkBlue curve
-            (but leave text)
-            curcolor = clickColors.shift() ? ? "white";
+            curcolor = clickColors.shift() ?? "white";
             clickColors.push(curcolor);
             clicked[ind] = true;
             // actually draw the curve
@@ -463,7 +463,7 @@ def.pad.bottom + height[0]})`)
                 .attr("id", `pherect_${ind}`)
                 .attr("x", 0)
                 .attr("width", width)
-                .attr("y", yScaleImg(indexInd[ind]) ? ? 0)
+                .attr("y", yScaleImg(indexInd[ind]) ?? 0)
                 .attr("height", def.pixelsPer)
                 .attr("fill", "none")
                 .attr("stroke", curcolor)
