@@ -1,7 +1,6 @@
 .RData
 .Rhistory
 Rout.txt
-*.json
 *.csv
 bower/bower_components
 !bower/bower.json

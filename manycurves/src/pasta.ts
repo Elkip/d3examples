@@ -1,6 +1,5 @@
 import { D3Event, def } from "./constants";
 import * as d3 from "d3";
-// import { color, rgb, scaleQuantile } from "d3";
 
 type Phenotypes = number[];
 interface IStudy {

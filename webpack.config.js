@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     mode: 'none',
-    entry: './src/pasta.ts',
+    entry: 'manycurves/src/pasta.ts',
     module: {
         rules: [
             {
@@ -17,6 +17,6 @@ module.exports = {
     },
     output: {
        filename: 'main.js',
-        path: path.resolve(__dirname, 'www'),
+        path: path.resolve(__dirname, 'manycurves/www'),
     },
 };
