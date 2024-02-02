@@ -2,7 +2,10 @@ const path = require('path');
 
 module.exports = {
     mode: 'none',
-    entry: 'manycurves/src/pasta.ts',
+    entry: {
+        manycurves: './src/manycurves/pasta.ts',
+        birth_death: './src/birth_death/script.ts'
+    },
     module: {
         rules: [
             {
@@ -16,7 +19,8 @@ module.exports = {
        extensions: ['.tsx','.ts','.js'],
     },
     output: {
-       filename: 'main.js',
-        path: path.resolve(__dirname, 'manycurves/www'),
+        filename: '[name].js',
+        chunkFilename: "[name].chunk.js",
+        path: path.resolve(__dirname, 'build/'),
     },
 };

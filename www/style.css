@@ -10,7 +10,7 @@ rect.background {
 }
 
 rect.button {
-    fill: #slateblue;
+    fill: slateblue;
     stroke: none;
 }
 
@@ -28,7 +28,7 @@ circle.points {
 }
 
 circle.dead {
-    fill: violetred;
+    fill: red;
 }
 
 svg text {

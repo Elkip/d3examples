@@ -28,3 +28,10 @@ export const def = {
 } as const;
 
 export type D3Event<T extends Event, E extends Element> = T & { currentTarget: E};
+
+type Phenotypes = number[];
+
+export interface IStudy {
+	curves: Phenotypes[];
+	times: number[];
+}

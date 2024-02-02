@@ -1,13 +1,7 @@
-import { D3Event, def } from "./constants";
+import {D3Event, def, IStudy} from "./constants";
 import * as d3 from "d3";
 
-type Phenotypes = number[];
-interface IStudy {
-    curves: Phenotypes[];
-    times: number[];
-}
-
-d3.json < IStudy > ("curves.json").then((data) => {
+d3.json < IStudy > ("../../data/curves.json").then((data) => {
     if (data === undefined) {
         return;
     }
@@ -158,11 +152,11 @@ def.pad.bottom + height[0]})`)
         .enter()
         .append("line")
         .attr("x1", (d) => {
-            return xScaleImg(d * 30 - 1) ?? 0 +
+            return (xScaleImg(d * 30 - 1) ?? 0) +
                 def.pixelsPer / 2;
         })
         .attr("x2", (d) => {
-            return xScaleImg(d * 30 - 1) ?? 0 + def.pixelsPer / 2;
+            return (xScaleImg(d * 30 - 1) ?? 0) + def.pixelsPer / 2;
         })
         .attr("y1", height[0])
         .attr("y2", height[0] + def.pad.bottom * 0.1)
@@ -176,7 +170,7 @@ def.pad.bottom + height[0]})`)
             return d;
         })
         .attr("x", (d) => {
-            return xScaleImg(d * 30 - 1) ?? 0 +
+            return (xScaleImg(d * 30 - 1) ?? 0) +
                 def.pixelsPer / 2;
         })
         .attr("y", height[0] + def.pad.bottom * 0.2)
@@ -326,8 +320,7 @@ def.pad.bottom + height[0]})`)
         .append("rect")
         .attr("class", "imgPixels")
         .attr("x", (d) => {
-            const x = xScaleImg(+d.col) ?? 0;
-            return x;
+            return xScaleImg(+d.col) ?? 0;
         })
         .attr("y", (d) => {
             const y = yScaleImg(indexInd[+d.row]);
@@ -342,10 +335,10 @@ def.pad.bottom + height[0]})`)
             return zScaleImg(d.value);
         })
         .attr("stroke-width", 0.5)
-        .on("mouseover", (event: D3Event < MouseEvent, SVGGElement > , d) =>
+        .on("mouseover", (event: D3Event < MouseEvent, SVGElement > , d) =>
             drawCurve(d.row)
         )
-        .on("click", (event: D3Event < MouseEvent, SVGGElement > , d) =>
+        .on("click", (event: D3Event < MouseEvent, SVGElement > , d) =>
             clickCurve(d.row)
         );
     // background curves for all individuals on lower chart
@@ -403,7 +396,7 @@ def.pad.bottom + height[0]})`)
             .y((d, di) => {
                 return yScaleCurve(data.curves[ind][di]);
             });
-    };
+    }
 
     function drawCurve(ind: number) {
         if (data === undefined) {
@@ -415,7 +408,7 @@ def.pad.bottom + height[0]})`)
         }
         curInd = ind;
         d3.select("g#phecurve").remove();
-        // Draw the Curve on the Speghetti Plot
+        // Draw the Curve on the Spaghetti Plot
         thecurve = curve.append("g").attr("id", "phecurve");
         thecurve.append("path")
             .attr("id", "phecurve")
@@ -427,7 +420,7 @@ def.pad.bottom + height[0]})`)
         // text to indicate individual
         return thecurve.append("text")
             .datum(ind)
-            .text(`line ${ind * 1 + 1}`)
+            .text(`line ${ind + 1}`)
             .attr("x", xScaleCurve(7 * 60 + 10))
             .attr("y", (yScaleCurve(0) + yScaleCurve(-20)) / 2)
             .attr("text-anchor", "start")
@@ -470,5 +463,5 @@ def.pad.bottom + height[0]})`)
                 .attr("stroke-width", 1)
                 .attr("pointer-events", "none");
         }
-    };
+    }
 });

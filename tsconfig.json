@@ -10,9 +10,8 @@
         "esModuleInterop": true,
         "allowJs": true,
         "sourceMap": true,
-        "outDir": "www/",
+        "outDir": "build/",
         "removeComments": true,
-        "sourceMap": true,
         "strict": true,
         "noImplicitThis": true,
         "noUnusedLocals": false,
@@ -20,6 +19,6 @@
         "noImplicitReturns": true
     },
     "include": [
-        "src/*.ts"
+        "./src/*/*.ts"
     ]
 }

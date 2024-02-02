@@ -1,7 +1,7 @@
 .RData
 .Rhistory
-Rout.txt
+*.txt
 *.csv
-bower/bower_components
-!bower/bower.json
+*.js
 node_modules/
+old/
