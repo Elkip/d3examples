@@ -1,22 +1,50 @@
 ### d3examples
 
-[Karl W Broman](http://kbroman.org)
+
 
 Examples of interactive graphics using [d3](http://d3js.org).
 
-See these in action [here](http://www.biostat.wisc.edu/~kbroman/D3).
+Original in action [here](http://www.biostat.wisc.edu/~kbroman/D3), by [Karl W Broman](http://kbroman.org)
 
-I have some additional simple examples in my [JSbroman](http://github.com/kbroman/JSbroman) repository.
 
----
+## Prereqs
 
-Most things depend on the [d3](http://d3js.org) library and many on
-[d3-tip](https://github.com/Caged/d3-tip),
-[d3panels](https://kbroman.org/d3panels),
-[jQuery](https://jquery.com/), and [jQuery UI](https://jqueryui.com/)
-libraries. I use [bower](http://bower.io/) (a packaging system for
-javascript) to grab them. See the
-[ReadMe file in the bower directory](https://github.com/kbroman/d3examples/tree/master/bower/ReadMe.md).
+This project requires NodeJS (version 18 or later) and NPM.
 
----
+```sh
+$ npm -v && node -v
+9.5.0
+v18.15.0
+```
+
+
+### Installation
+
+Requires the D3.js V7 ibrary
+
+```sh
+$ npm install
+```
+
+## Usage
+
+### Building
+
+```sh
+$ npm run build
+```
+
+To compile files into build/
+
+```sh
+$ npm run watch
+```
+
+To continously monitor for changes and rebuild instantly, for development.
+
+### Serving the App
+```sh
+$ npm start
+```
+
 Licensed under the [MIT license](License.md). ([More information](http://en.wikipedia.org/wiki/MIT_License))

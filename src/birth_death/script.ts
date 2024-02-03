@@ -76,7 +76,6 @@ function update(data: iData[], time= 1000) {
             .attr("r", r)
             .attr("class", "points");
 
-
     circles.enter()
         .append("circle")
         .attr("cx", (d) => d.x)
@@ -87,7 +86,7 @@ function update(data: iData[], time= 1000) {
         .duration(time)
         .attr("r", r);
     circles.exit()
-        .attr("dead", true)
+        .attr("class", "dead")
         .transition()
         .duration(time / 2)
         .delay(time / 2)
@@ -96,7 +95,6 @@ function update(data: iData[], time= 1000) {
 }
 // create the initial points
 update(points);
-console.log("new points: " + points)
 
 // button actions
 buttons.on("click", (event: D3Event < MouseEvent, SVGElement > , d) => {
@@ -107,8 +105,8 @@ buttons.on("click", (event: D3Event < MouseEvent, SVGElement > , d) => {
     } else if (d==0) {
         points_last += 1;
         points.push(generate_point(points_last));
-        note.text(`birth to number ${points_last}`);
+        note.text(`birth to number ${points_last + 1}`);
     }
+    update(points);
 });
 
-update(points)
